@@ -222,13 +222,13 @@ function normalMerge(a, b) {
 }
 
 function normalWin(merged) {
-  return merged === 4096;
+  return merged === -1;
 }
 
 function normal() {
   changeRule(normalAdd, 
     function(a, b) { return a === b; }, 
-    function(merged) { return merged === 2147483648; });
+    function(merged) { return merged === -1; });
 }
 
 function alwaysTwo() {
@@ -255,13 +255,13 @@ function fibonacci() {
       }
       return false;
     }, 
-    function(merged) { return merged === 5702887; });
+    function(merged) { return merged === -1; });
 }
 
 function threes() {
   changeRule(function() { return Math.random() < 0.7 ? (Math.random() < 0.5 ? 1 : 2) : 3; },
     function(a, b) { return (a === 1 && b === 2) || (a === 2 && b === 1) || (a > 2 && b > 2 && a === b); }, 
-    function(merged) { return merged === 1610612736; });
+    function(merged) { return merged === -1; });
 }
 
 function mergeAny() {
@@ -300,7 +300,7 @@ function tileNegative() {
 function gravity() {
   changeRule(normalAdd, 
     function(a, b) { return a === b; }, 
-    function(merged) { return merged === 2147483648; });
+    function(merged) { return merged === -1; });
   game.gravity = game.move;
   game.move = function(dir) {
     game.gravity(dir);
